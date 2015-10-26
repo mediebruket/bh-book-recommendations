@@ -35,6 +35,7 @@ final class BookRecommendations
   public static function includes() {
     require_once(  BHBR_DIR . 'inc/bhbook-feed.php'  );
     require_once(  BHBR_DIR . 'inc/bhbook-review.php'  );
+    require_once(  BHBR_DIR . 'inc/bhbook-widgets.php'  );
     require_once(  BHBR_DIR . 'inc/functions.php'  );
   }
 

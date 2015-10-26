@@ -8,7 +8,7 @@ function bhbook_shortcode_handler($atts = array()) {
 }
 add_shortcode('bhbook', 'bhbook_shortcode_handler');
 
-function bhbook_get_items($url) {
+function bhbook_get_items($url = BHBR_DEFAULT_URL) {
   if ( ! wp_style_is('bhbook') ) {
     wp_enqueue_style('bhbook');
   }
