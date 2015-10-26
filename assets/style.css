@@ -1,6 +1,6 @@
 .bhbook-item {
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .bhbook-image img {
   width: 100%;
@@ -9,7 +9,7 @@
 @media ( min-width: 500px ) {
   .bhbook-image {
     float: left;
-    padding-right: 25px;
+    padding-right: 5%;
     width: 30%;
   }
   .bhbook-content {
@@ -20,4 +20,7 @@
 
 .bhbook-title {
   font-weight: bold;
+}
+.bhbook-description {
+  font-size: 85%;
 }
