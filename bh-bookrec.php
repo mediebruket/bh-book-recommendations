@@ -37,7 +37,8 @@ final class BookRecommendationsFeed
 {
   private $items;
 
-  const FEED_TEST_URL = 'http://sites/devsite/feed/';
+  //const FEED_TEST_URL = 'http://sites/devsite/feed/';
+  const FEED_TEST_URL = 'http://www.framtida.no/rss/articles/top';
 
   public function __construct()
   {
