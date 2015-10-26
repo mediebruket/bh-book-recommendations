@@ -76,18 +76,20 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
    */
   public function widget( $args, $instance ) {
 
-
     // Check if there is a cached output
     $cache = wp_cache_get( $this->get_widget_slug(), 'widget' );
 
-    if ( !is_array( $cache ) )
+    if ( !is_array( $cache ) ) {
       $cache = array();
+    }
 
-    if ( ! isset ( $args['widget_id'] ) )
+    if ( ! isset ( $args['widget_id'] ) ) {
       $args['widget_id'] = $this->id;
+    }
 
-    if ( isset ( $cache[ $args['widget_id'] ] ) )
+    if ( isset ( $cache[ $args['widget_id'] ] ) ) {
       return print $cache[ $args['widget_id'] ];
+    }
 
     // go on with your widget logic, put everything into a string and …
 
@@ -95,6 +97,12 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     extract( $args, EXTR_SKIP );
 
     $widget_string = $before_widget;
+
+    $title = apply_filters( 'widget_title', $instance['title'] );
+
+    if ( ! empty( $title ) ) {
+      $widget_string .= $args['before_title'] . $title . $args['after_title'];
+    }
     $widget_string .= bhbook_get_items();
     $widget_string .= $after_widget;
 
@@ -108,8 +116,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   } // end widget
 
 
-  public function flush_widget_cache()
-  {
+  public function flush_widget_cache() {
     wp_cache_delete( $this->get_widget_slug(), 'widget' );
   }
   /**
@@ -119,14 +126,11 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
    * @param array old_instance The previous instance of values before the update.
    */
   public function update( $new_instance, $old_instance ) {
-
-    $instance = $old_instance;
-
-    // TODO: Here is where you update your widget's old values with the new, incoming values
-
+    $instance = array();
+    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
     return $instance;
+  }
 
-  } // end widget
 
   /**
    * Generates the administration form for the widget.
@@ -135,15 +139,18 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
    */
   public function form( $instance ) {
 
-    // TODO: Define default values for your variables
-    $instance = wp_parse_args(
-      (array) $instance
-      );
-
-    // TODO: Store the values of the widget in their own variable
-
-    // Display the admin form
-    include( plugin_dir_path(__FILE__) . 'views/admin.php' );
+    if ( isset( $instance[ 'title' ] ) ) {
+      $title = $instance[ 'title' ];
+    }
+    else {
+      $title = __( 'Bokomtaler', 'bh-bookrec' );
+    }
+    ?>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Tittel:', 'bh-bookrec' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+    </p>
+    <?php
 
   } // end form
 
