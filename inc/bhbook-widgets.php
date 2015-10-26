@@ -7,30 +7,8 @@ if ( ! defined ( 'ABSPATH' ) ) {
 
 class BookRecommendationsFeed_Widget extends WP_Widget {
 
-    /**
-     * @TODO - Rename "widget-name" to the name your your widget
-     *
-     * Unique identifier for your widget.
-     *
-     *
-     * The variable name is used as the text domain when internationalizing strings
-     * of text. Its value should match the Text Domain file header in the main
-     * widget file.
-     *
-     * @since    1.0.0
-     *
-     * @var      string
-     */
-    protected $widget_slug = 'bhbook-feed';
+  protected $widget_slug = 'bhbook-feed';
 
-    /*--------------------------------------------------*/
-  /* Constructor
-  /*--------------------------------------------------*/
-
-  /**
-   * Specifies the classname and description, instantiates the widget,
-   * loads localization files, and includes necessary stylesheets and JavaScript.
-   */
   public function __construct() {
 
     parent::__construct(
@@ -53,27 +31,11 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   } // end constructor
 
 
-    /**
-     * Return the widget slug.
-     *
-     * @since    1.0.0
-     *
-     * @return    Plugin slug variable.
-     */
-    public function get_widget_slug() {
-      return $this->widget_slug;
-    }
+  public function get_widget_slug() {
+    return $this->widget_slug;
+  }
 
-    /*--------------------------------------------------*/
-  /* Widget API Functions
-  /*--------------------------------------------------*/
 
-  /**
-   * Outputs the content of the widget.
-   *
-   * @param array args  The array of form elements
-   * @param array instance The current instance of the widget
-   */
   public function widget( $args, $instance ) {
 
     // Check if there is a cached output
@@ -90,9 +52,6 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     if ( isset ( $cache[ $args['widget_id'] ] ) ) {
       return print $cache[ $args['widget_id'] ];
     }
-
-    // go on with your widget logic, put everything into a string and …
-
 
     extract( $args, EXTR_SKIP );
 
@@ -119,12 +78,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   public function flush_widget_cache() {
     wp_cache_delete( $this->get_widget_slug(), 'widget' );
   }
-  /**
-   * Processes the widget's options to be saved.
-   *
-   * @param array new_instance The new instance of values to be generated via the update.
-   * @param array old_instance The previous instance of values before the update.
-   */
+
   public function update( $new_instance, $old_instance ) {
     $instance = array();
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
@@ -132,11 +86,6 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   }
 
 
-  /**
-   * Generates the administration form for the widget.
-   *
-   * @param array instance The array of keys and values for the widget.
-   */
   public function form( $instance ) {
 
     if ( isset( $instance[ 'title' ] ) ) {
@@ -155,9 +104,6 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   } // end form
 
 
-  /**
-   * Registers and enqueues widget-specific styles.
-   */
   public function register_widget_styles() {
 
     wp_enqueue_style( 'bhbook' );
