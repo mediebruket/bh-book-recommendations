@@ -1,0 +1,15 @@
+.bhbook-item {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.bhbook-image {
+  float: left;
+  width: 30%;
+}
+.bhbook-content {
+  float: left;
+  width: 70%;
+}
+.bhbook-title {
+  font-weight: bold;
+}

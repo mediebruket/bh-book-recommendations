@@ -19,6 +19,20 @@ if ( WP_DEBUG ) {
   add_filter('wp_feed_cache_transient_lifetime', function() { return 3;} );
 }
 
+final class BookRecommendations
+{
+  public function __construct() {
+    add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
+  }
+
+  public function register_assets() {
+    wp_register_style( 'bhbook', plugin_dir_url( __FILE__ ) . 'assets/style.css' );
+    wp_enqueue_style( 'bhbook' );
+  }
+}
+
+new BookRecommendations();
+
 final class BookRecommendationsFeed
 {
   private $items;
@@ -86,6 +100,9 @@ function bhbook_shortcode_handler($atts = array()) {
 add_shortcode('bhbook', 'bhbook_shortcode_handler');
 
 function bhbook_get_items($args = array()) {
+  if ( ! wp_style_is('bhbook') ) {
+    wp_enqueue_style('bhbook');
+  }
   $feed = new BookRecommendationsFeed();
   $html = '<div class="bhbook-items">';
   foreach ($feed->getItems() as $item) {
