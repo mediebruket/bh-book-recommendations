@@ -23,8 +23,8 @@ final class BookRecommendations
 {
   public function __construct() {
     add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
-    add_action( 'plugins_loaded', array( __CLASS__, 'constants' ), 1 );
-    add_action( 'plugins_loaded', array( __CLASS__, 'includes' ), 2 );
+    add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
+    add_action( 'plugins_loaded', array( $this, 'includes' ), 2 );
   }
 
   public function constants() {
