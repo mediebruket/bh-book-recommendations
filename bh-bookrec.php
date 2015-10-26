@@ -10,6 +10,15 @@ Text Domain: bh-bookrec
 Domain Path: /languages
 */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+  die;
+}
+
+if ( WP_DEBUG ) {
+  add_filter('wp_feed_cache_transient_lifetime', function() { return 3;} );
+}
+
 final class BookRecommendationsFeed
 {
   private $items;
@@ -69,16 +78,43 @@ final class BookRecommendationsReview
   }
 }
 
-function render_feed() {
+function bhbook_shortcode_handler($atts = array()) {
+  $a = shortcode_atts( array(
+  ), $atts );
+  return bhbook_get_items();
+}
+add_shortcode('bhbook', 'bhbook_shortcode_handler');
+
+function bhbook_get_items($args = array()) {
   $feed = new BookRecommendationsFeed();
+  $html = '<div class="bhbook-items">';
   foreach ($feed->getItems() as $item) {
     $review = new BookRecommendationsReview($item);
-    if ( function_exists('_log') ) {
-      _log($review);
-    }
+    $html .= bhbook_item_get_markup($review);
   }
+  $html .= '</div>';
+  return $html;
 }
 
-if ( WP_DEBUG ) {
-  add_filter('wp_feed_cache_transient_lifetime', function() { return 3;} );
+function bhbook_item_get_markup($review) {
+  $html = '<div class="bhbook-item">';
+  if ( $review->imageURL ) {
+    $html .= '<div class="bhbook-image">';
+    $html .= '<img src="' . $review->imageURL . '" alt="' . __('Illustrasjonsbilete til omtalen av ', 'bh-bookrec') . $review->title . '">';
+    $html .= '</div>';
+  }
+  else {
+    $html .= '<div class="bhbook-image">';
+    $html .= "Dummybilde";
+    $html .= '</div>';
+  }
+  $html .= '<div class="bhbook-content">';
+  $html .= '<div class="bhbook-title"><a href="' . $review->link . '">' . $review->title . '</a></div>';
+  if ( $review->description ) {
+    $html .= '<div class="bhbook-description">' . $review->description . '</div>';
+  }
+  $html .= '</div>';
+  $html .= '</div>';
+  return $html;
 }
+
