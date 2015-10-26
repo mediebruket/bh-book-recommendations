@@ -2,14 +2,22 @@
   overflow: hidden;
   margin-bottom: 20px;
 }
-.bhbook-image {
-  float: left;
-  width: 30%;
+.bhbook-image img {
+  width: 100%;
 }
-.bhbook-content {
-  float: left;
-  width: 70%;
+
+@media ( min-width: 500px ) {
+  .bhbook-image {
+    float: left;
+    padding-right: 25px;
+    width: 30%;
+  }
+  .bhbook-content {
+    float: left;
+    width: 70%;
+  }
 }
+
 .bhbook-title {
   font-weight: bold;
 }

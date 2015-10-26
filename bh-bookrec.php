@@ -129,7 +129,7 @@ function bhbook_item_get_markup($review) {
     $html .= '</div>';
   }
   $html .= '<div class="bhbook-content">';
-  $html .= '<div class="bhbook-title"><a href="' . $review->link . '">' . $review->title . '</a></div>';
+  $html .= '<div class="bhbook-title"><a target="_blank" href="' . $review->link . '">' . $review->title . '</a></div>';
   if ( $review->description ) {
     $html .= '<div class="bhbook-description">' . $review->description . '</div>';
   }
