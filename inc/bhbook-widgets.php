@@ -58,11 +58,12 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     $widget_string = $before_widget;
 
     $title = apply_filters( 'widget_title', $instance['title'] );
+    $url = esc_url($instance['url']);
 
     if ( ! empty( $title ) ) {
       $widget_string .= $args['before_title'] . $title . $args['after_title'];
     }
-    $widget_string .= bhbook_get_items();
+    $widget_string .= bhbook_get_items($url);
     $widget_string .= $after_widget;
 
 
@@ -82,22 +83,33 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
   public function update( $new_instance, $old_instance ) {
     $instance = array();
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw(strip_tags( $new_instance['url'] )) : '';
     return $instance;
   }
 
 
   public function form( $instance ) {
 
-    if ( isset( $instance[ 'title' ] ) ) {
-      $title = $instance[ 'title' ];
+    if ( isset( $instance['title'] ) ) {
+      $title = $instance['title'];
     }
     else {
       $title = __( 'Bokomtaler', 'bh-bookrec' );
+    }
+    if ( isset( $instance['url'] ) ) {
+      $url = $instance['url'];
+    }
+    else {
+      $url = BHBR_DEFAULT_URL;
     }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Tittel:', 'bh-bookrec' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'URL:', 'bh-bookrec' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_url( $url ); ?>" />
     </p>
     <?php
 
