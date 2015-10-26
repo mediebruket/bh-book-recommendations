@@ -95,12 +95,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     extract( $args, EXTR_SKIP );
 
     $widget_string = $before_widget;
-
-    ob_start();
-
     $widget_string .= bhbook_get_items();
-
-    $widget_string .= ob_get_clean();
     $widget_string .= $after_widget;
 
 

@@ -14,10 +14,12 @@ function bhbook_get_items($url = BHBR_DEFAULT_URL) {
   }
   $feed = new BookRecommendationsFeed($url);
   $html = '<div class="bhbook-items">';
+  ob_start();
   foreach ($feed->getItems() as $item) {
     $review = new BookRecommendationsReview($item);
     $html .= bhbook_item_get_markup($review);
   }
+  $html .= ob_get_clean();
   $html .= '</div>';
   return $html;
 }
