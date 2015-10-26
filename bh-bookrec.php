@@ -77,17 +77,19 @@ final class BookRecommendationsReview
   }
   private function setAuthor($item)
   {
-    $author = $item->get_author();
-    $this->author = $author->get_name();
+    if ( $author = $item->get_author() ) {
+      $this->author = $author->get_name();
+    }
   }
 
   private function setImageUrl($item)
   {
-    $enclosure = $item->get_enclosure();
-    $image_type = explode('/', $enclosure->get_type());
+    if ( $enclosure = $item->get_enclosure() ) {
+      $image_type = explode('/', $enclosure->get_type());
 
-    if ( $image_type && $image_type[0] == 'image' ) {
-      $this->imageURL = $enclosure->get_link();
+      if ( $image_type && $image_type[0] == 'image' ) {
+        $this->imageURL = $enclosure->get_link();
+      }
     }
   }
 }
