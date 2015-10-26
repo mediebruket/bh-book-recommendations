@@ -2,16 +2,17 @@
 
 function bhbook_shortcode_handler($atts = array()) {
   $a = shortcode_atts( array(
+    'url' => BHBR_DEFAULT_URL
     ), $atts );
-  return bhbook_get_items();
+  return bhbook_get_items($a['url']);
 }
 add_shortcode('bhbook', 'bhbook_shortcode_handler');
 
-function bhbook_get_items($args = array()) {
+function bhbook_get_items($url) {
   if ( ! wp_style_is('bhbook') ) {
     wp_enqueue_style('bhbook');
   }
-  $feed = new BookRecommendationsFeed();
+  $feed = new BookRecommendationsFeed($url);
   $html = '<div class="bhbook-items">';
   foreach ($feed->getItems() as $item) {
     $review = new BookRecommendationsReview($item);

@@ -29,6 +29,7 @@ final class BookRecommendations
 
   public function constants() {
     define( 'BHBR_DIR', plugin_dir_path( __FILE__ ) );
+    define( 'BHBR_DEFAULT_URL', 'http://www.framtida.no/rss/articles/top' );
   }
 
   public static function includes() {
