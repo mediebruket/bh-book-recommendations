@@ -13,10 +13,10 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     parent::__construct(
       $this->get_widget_slug(),
-      __( 'BH Bokomtaler', 'bh-bookrec' ),
+      __( 'BH Book Recommendations', 'bh-bookrec' ),
       array(
         'classname'  => 'bh-bookrec-class',
-        'description' => __( 'Hentar og viser RSS med bokomtaler frå definert URL.', 'bh-bookrec' )
+        'description' => __( 'Displays book recommendations content from RSS.', 'bh-bookrec' )
         )
       );
 
@@ -98,7 +98,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
       $title = $instance['title'];
     }
     else {
-      $title = __( 'Bokomtaler', 'bh-bookrec' );
+      $title = __( 'Book recommendations', 'bh-bookrec' );
     }
     if ( isset( $instance['url'] ) ) {
       $url = $instance['url'];
@@ -108,7 +108,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Tittel:', 'bh-bookrec' ); ?></label>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bh-bookrec' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
     </p>
     <p>

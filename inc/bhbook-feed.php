@@ -10,7 +10,7 @@ final class BookRecommendationsFeed {
       $this->items = $feed->get_items();
     }
     else {
-      echo __('Det er noko gale med straumen. Sjekk parametrane.', 'bh-bookrec');
+      echo __('There is something wrong with the feed. Please check the arguments.', 'bh-bookrec');
     }
   }
 
