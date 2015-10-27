@@ -11,7 +11,7 @@ final class BookRecommendationsReview {
   public function __construct($item) {
     $this->title = $item->get_title();
     $this->link = esc_url($item->get_link());
-    $this->description = wp_strip_all_tags($item->get_description());
+    $this->description = htmlspecialchars_decode(wp_strip_all_tags($item->get_description()));
     $this->pubDate = $item->get_date(get_option('date_format'));
     $this->setAuthor($item);
     $this->setImageUrl($item);
