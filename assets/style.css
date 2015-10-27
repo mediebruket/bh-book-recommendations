@@ -2,6 +2,11 @@
   overflow: hidden;
   margin-bottom: 30px;
 }
+
+.bhbook-image a {
+  display: inline-block;
+}
+
 .bhbook-image img {
   width: 100%;
 }
@@ -21,6 +26,7 @@
 .bhbook-title {
   font-weight: bold;
 }
+
 .bhbook-description {
   font-size: 85%;
 }

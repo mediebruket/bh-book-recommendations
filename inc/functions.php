@@ -26,16 +26,16 @@ function bhbook_get_items($url = BHBR_DEFAULT_URL) {
 
 function bhbook_item_get_markup($review) {
   $html = '<div class="bhbook-item">';
+  $html .= '<div class="bhbook-image">';
+  $html .= '<a target="_blank" href="' . $review->link . '">';
   if ( $review->imageURL ) {
-    $html .= '<div class="bhbook-image">';
     $html .= '<img src="' . $review->imageURL . '" alt="' . __('Illustrasjonsbilete til omtalen av ', 'bh-bookrec') . $review->title . '">';
-    $html .= '</div>';
   }
   else {
-    $html .= '<div class="bhbook-image">';
-    $html .= "Dummybilde";
-    $html .= '</div>';
+    $html .= '<img alt="'. __('Artikkelen manglar bilete og dette vert sett inn i staden', 'bh-bookrec') .'" src="' . BHBR_URL . 'assets/placeholder.png">';
   }
+  $html .= '</a>';
+  $html .= '</div>';
   $html .= '<div class="bhbook-content">';
   $html .= '<div class="bhbook-title"><a target="_blank" href="' . $review->link . '">' . $review->title . '</a></div>';
   if ( $review->description ) {
