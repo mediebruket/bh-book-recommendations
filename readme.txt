@@ -13,20 +13,13 @@ Provides shortcode and widget for displaying book recommendations from selected 
 
 == Installation ==
 
+Download to `wp-content/plugins/` and activate.
+
 == Frequently Asked Questions ==
 
-= A question that someone might have =
-
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
-
-== Screenshots ==
+No questions asked yet.
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 0.1 =
+* Initial release.
