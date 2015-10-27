@@ -1,10 +1,15 @@
 .bhbook-item {
   overflow: hidden;
   margin-bottom: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .bhbook-image a {
-  display: inline-block;
+  display: block;
+  border-bottom: 0 none !important;
+  text-decoration: none;
 }
 
 .bhbook-image img {
@@ -29,4 +34,38 @@
 
 .bhbook-description {
   font-size: 85%;
+}
+
+.bhbook-items__grid {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.bhbook-items__grid .bhbook-item {
+  margin-right: 10px;
+  width: 30%;
+}
+.bhbook-items__grid .bhbook-image {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.bhbook-items__grid .bhbook-content {
+  width: 100%;
 }

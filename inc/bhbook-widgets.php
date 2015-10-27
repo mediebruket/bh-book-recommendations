@@ -63,7 +63,11 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     if ( ! empty( $title ) ) {
       $widget_string .= $args['before_title'] . $title . $args['after_title'];
     }
-    $widget_string .= bhbook_get_items($url);
+
+    $feed_args = array(
+      'url' => $url
+      );
+    $widget_string .= bhbook_get_items($feed_args);
     $widget_string .= $after_widget;
 
 
