@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BH Book Recommendations\n"
-"POT-Creation-Date: 2015-10-27 10:00+0100\n"
-"PO-Revision-Date: 2015-12-21 21:31+0100\n"
+"POT-Creation-Date: 2015-12-21 22:11+0100\n"
+"PO-Revision-Date: 2015-12-21 22:12+0100\n"
 "Last-Translator: Havard Grimelid <havard@mediebruket.no>\n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -30,18 +30,19 @@ msgid "BH Book Recommendations"
 msgstr "BH Bokanbefalinger"
 
 #: inc/bhbook-widgets.php:19
+#, fuzzy
 msgid "Displays book recommendations content from RSS."
 msgstr "Viser bokanbefalinger fra RSS."
 
-#: inc/bhbook-widgets.php:101
+#: inc/bhbook-widgets.php:99
 msgid "Book recommendations"
 msgstr "Bokanbefalinger"
 
-#: inc/bhbook-widgets.php:111
+#: inc/bhbook-widgets.php:109
 msgid "Title:"
 msgstr "Tittel:"
 
-#: inc/bhbook-widgets.php:115
+#: inc/bhbook-widgets.php:113
 msgid "URL:"
 msgstr "URL:"
 
