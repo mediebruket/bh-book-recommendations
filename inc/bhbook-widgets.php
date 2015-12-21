@@ -20,10 +20,8 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
         )
       );
 
-    // Register site styles and scripts
     add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
 
-    // Refreshing the widget's cached output with each new post
     add_action( 'save_post',    array( $this, 'flush_widget_cache' ) );
     add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
     add_action( 'switch_theme', array( $this, 'flush_widget_cache' ) );
@@ -129,5 +127,4 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
 } // end class
 
-// TODO: Remember to change 'Widget_Name' to match the class name definition
 add_action( 'widgets_init', create_function( '', 'register_widget("BookRecommendationsFeed_Widget");' ) );
