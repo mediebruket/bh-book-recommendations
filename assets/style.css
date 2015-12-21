@@ -1,9 +1,14 @@
-.bhbook-item {
-  overflow: hidden;
-  margin-bottom: 30px;
+.bhbook-item,
+.bhbook-content,
+.bhbook-image {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.bhbook-item {
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
 .bhbook-image a {
