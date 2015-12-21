@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BH Book Recommendations\n"
-"POT-Creation-Date: 2015-12-21 22:11+0100\n"
-"PO-Revision-Date: 2015-12-21 22:12+0100\n"
+"POT-Creation-Date: 2015-12-21 22:18+0100\n"
+"PO-Revision-Date: 2015-12-21 22:19+0100\n"
 "Last-Translator: Havard Grimelid <havard@mediebruket.no>\n"
-"Language-Team: \n"
+"Language-Team: Havard Grimelid <havard@mediebruket.no>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,6 @@ msgid "BH Book Recommendations"
 msgstr "BH Bokanbefalinger"
 
 #: inc/bhbook-widgets.php:19
-#, fuzzy
 msgid "Displays book recommendations content from RSS."
 msgstr "Viser bokanbefalinger fra RSS."
 
@@ -60,11 +59,9 @@ msgstr "http://mediebruket.no"
 
 #. Description of the plugin/theme
 msgid ""
-"Provides shortcode and widget for displaying book recommendations from "
-"selected norwegian providers."
-msgstr ""
-"Gir kortnummer og widget for visning av bokanbefalinger fra utvalgte norske "
-"leverandører."
+"Provides shortcode and widget for displaying book recommendations from RSS "
+"source."
+msgstr "Gir kortcode og widget for å vise bokanbefalinger fra RSS-kilder."
 
 #. Author of the plugin/theme
 msgid "Håvard Grimelid"
