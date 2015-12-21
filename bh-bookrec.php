@@ -34,7 +34,7 @@ final class BookRecommendations
     define( 'BHBR_DEFAULT_URL', 'http://anbefalinger.deichman.no/feed' );
   }
 
-  public static function includes() {
+  public function includes() {
     require_once(  BHBR_DIR . 'inc/bhbook-feed.php'  );
     require_once(  BHBR_DIR . 'inc/bhbook-review.php'  );
     require_once(  BHBR_DIR . 'inc/bhbook-widgets.php'  );
@@ -47,7 +47,7 @@ final class BookRecommendations
   }
 
   public function add_textdomain() {
-   load_plugin_textdomain( 'bh-bookrec', false, BHBR_DIR . '/languages' );
+   load_plugin_textdomain( 'bh-bookrec', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
   }
 }
 
