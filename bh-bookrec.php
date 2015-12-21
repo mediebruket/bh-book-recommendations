@@ -25,6 +25,7 @@ final class BookRecommendations
     add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
     add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
     add_action( 'plugins_loaded', array( $this, 'includes' ), 2 );
+    add_action( 'plugins_loaded', array( $this, 'add_textdomain'), 3);
   }
 
   public function constants() {
@@ -43,6 +44,10 @@ final class BookRecommendations
   public function register_assets() {
     wp_register_style( 'bhbook', plugin_dir_url( __FILE__ ) . 'assets/style.css' );
     wp_enqueue_style( 'bhbook' );
+  }
+
+  public function add_textdomain() {
+   load_plugin_textdomain( 'bh-bookrec', false, BHBR_DIR . '/languages' );
   }
 }
 
