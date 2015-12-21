@@ -30,7 +30,7 @@ final class BookRecommendations
   public function constants() {
     define( 'BHBR_DIR', plugin_dir_path( __FILE__ ) );
     define( 'BHBR_URL', plugin_dir_url( __FILE__ ) );
-    define( 'BHBR_DEFAULT_URL', 'http://www.framtida.no/rss/articles/top' );
+    define( 'BHBR_DEFAULT_URL', 'http://anbefalinger.deichman.no/feed' );
   }
 
   public static function includes() {
@@ -47,4 +47,3 @@ final class BookRecommendations
 }
 
 new BookRecommendations();
-
