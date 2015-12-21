@@ -2,7 +2,7 @@
 /*
 Plugin Name: BH Book Recommendations
 Version: 0.1-alpha
-Description: Provides shortcode and widget for displaying book recommendations from selected norwegian providers.
+Description: Provides shortcode and widget for displaying book recommendations from RSS source.
 Author: Håvard Grimelid
 Author URI: https://profiles.wordpress.org/hgmb
 Plugin URI: http://mediebruket.no
