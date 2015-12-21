@@ -15,7 +15,7 @@ function bhbook_get_items($args) {
   }
   $feed = new BookRecommendationsFeed($args['url']);
   $additional_classes = '';
-  if ( $args['display'] == 'grid' ) {
+  if ( array_key_exists('display', $args) && $args['display'] == 'grid' ) {
     $additional_classes = 'bhbook-items__grid';
   }
   $html = '<div class="bhbook-items '. $additional_classes . '">';
