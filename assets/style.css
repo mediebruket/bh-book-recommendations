@@ -7,9 +7,10 @@
 }
 
 .bhbook-item {
-  text-align: left;
-  overflow: hidden;
   margin-bottom: 30px;
+  list-style-type: none;
+  overflow: hidden;
+  text-align: left;
 }
 
 .bhbook-image a {
