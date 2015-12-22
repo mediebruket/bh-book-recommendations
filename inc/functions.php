@@ -18,19 +18,19 @@ function bhbook_get_items($args) {
   if ( array_key_exists('display', $args) && $args['display'] == 'grid' ) {
     $additional_classes = 'bhbook-items__grid';
   }
-  $html = '<div class="bhbook-items '. $additional_classes . '">';
+  $html = '<ul class="bhbook-items '. $additional_classes . '">';
   ob_start();
   foreach ($feed->getItems() as $item) {
     $review = new BookRecommendationsReview($item);
     $html .= bhbook_item_get_markup($review);
   }
   $html .= ob_get_clean();
-  $html .= '</div>';
+  $html .= '</ul>';
   return $html;
 }
 
 function bhbook_item_get_markup($review) {
-  $html = '<div class="bhbook-item">';
+  $html = '<li class="bhbook-item">';
   $html .= '<div class="bhbook-image">';
   $html .= '<a target="_blank" href="' . $review->link . '">';
   if ( $review->imageURL ) {
@@ -47,6 +47,6 @@ function bhbook_item_get_markup($review) {
     $html .= '<div class="bhbook-description">' . $review->description . '</div>';
   }
   $html .= '</div>';
-  $html .= '</div>';
+  $html .= '</li>' . "\n";
   return $html;
 }
