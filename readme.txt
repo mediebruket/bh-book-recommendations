@@ -17,6 +17,8 @@ The plugin is written primarily to work with the book recommendations feed from 
 
 The plugin uses the main Deichman RSS feed as default: `http://anbefalinger.deichman.no/`. But this can be changed by supplying a new URL as argument to the shortcode or added in the widget configuration.
 
+The plugin is available in English, Norwegian bokmål and Norwegian nynorsk.
+
 The development of this plugin is sponsored by [Hordaland Fylkeskommune](http://www.hfk.no/).
 
 == Installation ==
@@ -34,6 +36,9 @@ In order to change display to grid, use the display argument in the shortcode, f
 Additionally, there is also a widget available. Custom feed URL can be utilized as described above.
 
 == Changelog ==
+
+= 0.1.1 =
+* Change grid styling, add html truncation.
 
 = 0.1 =
 * Initial release.
