@@ -13,10 +13,10 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     parent::__construct(
       $this->get_widget_slug(),
-      __( 'BH Book Recommendations', 'bh-bookrec' ),
+      __( 'BH Book Recommendations', 'bh-book-recommendations' ),
       array(
-        'classname'  => 'bh-bookrec-class',
-        'description' => __( 'Displays book recommendations content from RSS.', 'bh-bookrec' )
+        'classname'  => 'bh-book-recommendations-class',
+        'description' => __( 'Displays book recommendations content from RSS.', 'bh-book-recommendations' )
         )
       );
 
@@ -96,7 +96,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
       $title = $instance['title'];
     }
     else {
-      $title = __( 'Book recommendations', 'bh-bookrec' );
+      $title = __( 'Book recommendations', 'bh-book-recommendations' );
     }
     if ( isset( $instance['url'] ) ) {
       $url = $instance['url'];
@@ -106,11 +106,11 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bh-bookrec' ); ?></label>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bh-book-recommendations' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'URL:', 'bh-bookrec' ); ?></label>
+      <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'URL:', 'bh-book-recommendations' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_url( $url ); ?>" />
     </p>
     <?php

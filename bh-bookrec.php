@@ -6,7 +6,7 @@ Description: Provides shortcode and widget for displaying book recommendations f
 Author: Håvard Grimelid
 Author URI: https://profiles.wordpress.org/hgmb
 Plugin URI: http://mediebruket.no
-Text Domain: bh-bookrec
+Text Domain: bh-book-recommendations
 Domain Path: /languages
 */
 
@@ -47,7 +47,7 @@ final class BookRecommendations
   }
 
   public function add_textdomain() {
-   load_plugin_textdomain( 'bh-bookrec', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+   load_plugin_textdomain( 'bh-book-recommendations', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
   }
 }
 

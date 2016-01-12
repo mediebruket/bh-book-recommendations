@@ -34,10 +34,10 @@ function bhbook_item_get_markup($review) {
   $html .= '<div class="bhbook-image">';
   $html .= '<a target="_blank" href="' . $review->link . '">';
   if ( $review->imageURL ) {
-    $html .= '<img src="' . $review->imageURL . '" alt="' . __('Illustrative image for the review of ', 'bh-bookrec') . $review->title . '">';
+    $html .= '<img src="' . $review->imageURL . '" alt="' . __('Illustrative image for the review of ', 'bh-book-recommendations') . $review->title . '">';
   }
   else {
-    $html .= '<img alt="'. __('The review does not have an image so this is used as a replacement', 'bh-bookrec') .'" src="' . BHBR_URL . 'assets/placeholder.png">';
+    $html .= '<img alt="'. __('The review does not have an image so this is used as a replacement', 'bh-book-recommendations') .'" src="' . BHBR_URL . 'assets/placeholder.png">';
   }
   $html .= '</a>';
   $html .= '</div>';
