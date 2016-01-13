@@ -37,6 +37,9 @@ Additionally, there is also a widget available. Custom feed URL can be utilized 
 
 == Changelog ==
 
+= 0.1.2 =
+* Make plugin translatable.
+
 = 0.1.1 =
 * Change grid styling, add html truncation.
 

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: BH Book Recommendations
-Version: 0.1.1
+Version: 0.1.2
 Description: Provides shortcode and widget for displaying book recommendations from RSS source.
 Author: Håvard Grimelid
 Author URI: https://profiles.wordpress.org/hgmb
