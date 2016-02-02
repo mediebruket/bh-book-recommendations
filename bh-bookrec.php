@@ -22,7 +22,7 @@ if ( WP_DEBUG ) {
 final class BookRecommendations
 {
   public function __construct() {
-    add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 20 );
     add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
     add_action( 'plugins_loaded', array( $this, 'includes' ), 2 );
     add_action( 'plugins_loaded', array( $this, 'add_textdomain'), 3);
@@ -42,7 +42,14 @@ final class BookRecommendations
   }
 
   public function register_assets() {
-    wp_register_style( 'bhbook', plugin_dir_url( __FILE__ ) . 'assets/style.css' );
+    $stylesheet_url = plugin_dir_url( __FILE__ ) . 'assets/style.css';
+    $stylesheet_path = plugin_dir_path ( __FILE__ ) . 'assets/style.css';
+    wp_register_style(
+      'bhbook',
+      $stylesheet_url,
+      array(),
+      filemtime($stylesheet_path)
+      );
     wp_enqueue_style( 'bhbook' );
   }
 
