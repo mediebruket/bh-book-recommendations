@@ -70,6 +70,10 @@
   padding-right: 0;
   width: 100%;
 }
+.bhbook-items__grid .bhbook-image img {
+  height: 200px;
+  width: auto;
+}
 
 .bhbook-items__grid .bhbook-content {
   width: 100%;
