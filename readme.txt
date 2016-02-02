@@ -37,6 +37,9 @@ Additionally, there is also a widget available. Custom feed URL can be utilized 
 
 == Changelog ==
 
+= 0.1.4 =
+* Version number bump. No changes in this version.
+
 = 0.1.3 =
 * Use fixed image height in grid view and use stylesheet timestamp in query string for cache busting.
 
