@@ -1,9 +1,9 @@
 === BH Book Recommendations ===
 Contributors: hgmb
 Tags: rss, deichman, library, bibliotek, hordaland, shortcode, widget, feed
-Requires at least: 3.0.1
-Tested up to: 4.6
-Stable tag: 4.6
+Requires at least: 4.3
+Tested up to: 4.7
+Stable tag: 0.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
