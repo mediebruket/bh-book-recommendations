@@ -63,7 +63,8 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     }
 
     $feed_args = array(
-      'url' => $url
+      'url' => $url,
+      'images' => false
       );
     $widget_string .= bhbook_get_items($feed_args);
     $widget_string .= $after_widget;

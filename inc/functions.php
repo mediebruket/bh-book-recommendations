@@ -3,8 +3,10 @@
 function bhbook_shortcode_handler($atts = array()) {
   $a = shortcode_atts( array(
     'url' => BHBR_DEFAULT_URL,
-    'display' => ''
+    'display' => '',
+    'images' => true
     ), $atts );
+    $a['images'] = filter_var($a['images'], FILTER_VALIDATE_BOOLEAN);
   return bhbook_get_items($a);
 }
 add_shortcode('bhbook', 'bhbook_shortcode_handler');
@@ -22,20 +24,22 @@ function bhbook_get_items($args) {
   ob_start();
   foreach ($feed->getItems() as $item) {
     $review = new BookRecommendationsReview($item);
-    $html .= bhbook_item_get_markup($review);
+    $html .= bhbook_item_get_markup($review, $args['images']);
   }
   $html .= ob_get_clean();
   $html .= '</ul>';
   return $html;
 }
 
-function bhbook_item_get_markup($review) {
+function bhbook_item_get_markup($review, $show_images = true) {
   $html = '<li class="bhbook-item">';
-  $html .= '<div class="bhbook-image">';
-  $html .= '<a target="_blank" href="' . $review->link . '">';
-  $html .= bhbook_get_image_tag($review);
-  $html .= '</a>';
-  $html .= '</div>';
+  if ($show_images) {
+    $html .= '<div class="bhbook-image">';
+    $html .= '<a target="_blank" href="' . $review->link . '">';
+    $html .= bhbook_get_image_tag($review);
+    $html .= '</a>';
+    $html .= '</div>';
+  }
   $html .= '<div class="bhbook-content">';
   $html .= '<div class="bhbook-title"><a target="_blank" href="' . $review->link . '">' . $review->title . '</a></div>';
   if ( $review->description ) {

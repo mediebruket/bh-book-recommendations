@@ -29,7 +29,8 @@
     padding-right: 5%;
     width: 30%;
   }
-  .bhbook-content {
+  /* Only float and adjust size if next to image */
+  .bhbook-image + .bhbook-content {
     float: left;
     width: 70%;
   }
