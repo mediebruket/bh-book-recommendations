@@ -33,12 +33,7 @@ function bhbook_item_get_markup($review) {
   $html = '<li class="bhbook-item">';
   $html .= '<div class="bhbook-image">';
   $html .= '<a target="_blank" href="' . $review->link . '">';
-  if ( $review->imageURL ) {
-    $html .= '<img src="' . $review->imageURL . '" alt="' . __('Illustrative image for the review of ', 'bh-book-recommendations') . $review->title . '">';
-  }
-  else {
-    $html .= '<img alt="'. __('The review does not have an image so this is used as a replacement', 'bh-book-recommendations') .'" src="' . BHBR_URL . 'assets/placeholder.png">';
-  }
+  $html .= bhbook_get_image_tag($review);
   $html .= '</a>';
   $html .= '</div>';
   $html .= '<div class="bhbook-content">';
@@ -49,4 +44,19 @@ function bhbook_item_get_markup($review) {
   $html .= '</div>';
   $html .= '</li>' . "\n";
   return $html;
+}
+
+function bhbook_get_image_tag($review) {
+  $url = $review->imageURL;
+  $alt = __('Illustrative image for the review of ', 'bh-book-recommendations') . $review->title;
+  if (strpos($url, 'krydder') !== false || strlen($url) == 0) {
+    $url = BHBR_URL . 'assets/placeholder.png';
+    $alt = __('The review does not have an image so this is used as a replacement', 'bh-book-recommendations');
+  }
+  elseif (strpos($review->imageURL, 'bokkilden') !== false) {
+    $url = $review->imageURL . '&width=300';
+  }
+  str_replace('http:', '', $url);
+  str_replace('https:', '', $url);
+  return sprintf('<img src="%s" alt="%s">', $url, $alt);
 }
