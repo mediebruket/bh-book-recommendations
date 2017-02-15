@@ -2,8 +2,8 @@
 Contributors: hgmb
 Tags: rss, deichman, library, bibliotek, hordaland, shortcode, widget, feed
 Requires at least: 4.3
-Tested up to: 4.7
-Stable tag: 0.1.4
+Tested up to: 4.7.2
+Stable tag: 0.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,11 +31,14 @@ Customize the results by creating a custom feed at `http://anbefalinger.deichman
 
 As per version 0.1 the plugin has two different modes of displaying the feed, namely *list* and *grid*, where the former is default.
 
-In order to change display to grid, use the display argument in the shortcode, for example like this: `[bhbook display="grid"]`.
+In order to change display to grid, use the display argument in the shortcode, for example like this: `[bhbook display="grid"]`. Images can be turned off in shortcode: `[bhbook images="false"]`
 
 Additionally, there is also a widget available. Custom feed URL can be utilized as described above.
 
 == Changelog ==
+
+= 0.1.5 =
+* Reduce size for images from Bokkilden and prevent images from Krydder from being displayed. Added support for disable images altogether in shortcode with `images=false` argument.
 
 = 0.1.4 =
 * Version number bump. No changes in this version.
