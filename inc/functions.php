@@ -4,9 +4,14 @@ function bhbook_shortcode_handler($atts = array()) {
   $a = shortcode_atts( array(
     'url' => BHBR_DEFAULT_URL,
     'display' => '',
-    'images' => true
+    'images' => true,
+    'number' => BHBR_DEFAULT_NO_ITEMS
     ), $atts );
     $a['images'] = filter_var($a['images'], FILTER_VALIDATE_BOOLEAN);
+    $a['number'] = intval($a['number']);
+    if (! $a['number']) {
+      $a['number'] = BHBR_DEFAULT_NO_ITEMS;
+    }
   return bhbook_get_items($a);
 }
 add_shortcode('bhbook', 'bhbook_shortcode_handler');
@@ -15,7 +20,7 @@ function bhbook_get_items($args) {
   if ( ! wp_style_is('bhbook') ) {
     wp_enqueue_style('bhbook');
   }
-  $feed = new BookRecommendationsFeed($args['url']);
+  $feed = new BookRecommendationsFeed($args['url'], $args['number']);
   $additional_classes = '';
   if ( array_key_exists('display', $args) && $args['display'] == 'grid' ) {
     $additional_classes = 'bhbook-items__grid';

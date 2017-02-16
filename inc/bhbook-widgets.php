@@ -64,7 +64,8 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     $feed_args = array(
       'url' => $url,
-      'images' => false
+      'images' => false,
+      'number' => BHBR_DEFAULT_NO_ITEMS
       );
     $widget_string .= bhbook_get_items($feed_args);
     $widget_string .= $after_widget;

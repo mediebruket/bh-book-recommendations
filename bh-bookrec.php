@@ -31,6 +31,7 @@ final class BookRecommendations
   public function constants() {
     define( 'BHBR_DIR', plugin_dir_path( __FILE__ ) );
     define( 'BHBR_URL', plugin_dir_url( __FILE__ ) );
+    define( 'BHBR_DEFAULT_NO_ITEMS', 10 );
     define( 'BHBR_DEFAULT_URL', 'http://anbefalinger.deichman.no/feed' );
   }
 
