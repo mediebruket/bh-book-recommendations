@@ -57,6 +57,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     $title = apply_filters( 'widget_title', $instance['title'] );
     $url = esc_url($instance['url']);
+    $no_items = $instance['no_items'];
 
     if ( ! empty( $title ) ) {
       $widget_string .= $args['before_title'] . $title . $args['after_title'];
@@ -64,8 +65,8 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     $feed_args = array(
       'url' => $url,
-      'images' => false,
-      'number' => BHBR_DEFAULT_NO_ITEMS
+      'images' => true,
+      'number' => $no_items
       );
     $widget_string .= bhbook_get_items($feed_args);
     $widget_string .= $after_widget;
@@ -88,6 +89,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     $instance = array();
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
     $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw(strip_tags( $new_instance['url'] )) : '';
+    $instance['no_items'] = ( ! empty( $new_instance['no_items'] ) ) ? intval( $new_instance['no_items'] ) : '';
     return $instance;
   }
 
@@ -106,6 +108,12 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     else {
       $url = BHBR_DEFAULT_URL;
     }
+    if ( isset( $instance['no_items'] ) ) {
+      $no_items = $instance['no_items'];
+    }
+    else {
+      $no_items = BHBR_DEFAULT_NO_ITEMS;
+    }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bh-book-recommendations' ); ?></label>
@@ -114,6 +122,21 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     <p>
       <label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'URL:', 'bh-book-recommendations' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_url( $url ); ?>" />
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'no_items' ); ?>"><?php _e( 'Number of items:', 'bh-book-recommendations' ); ?></label>
+      <select id="<?php echo $this->get_field_id( 'no_items' ); ?>" name="<?php echo $this->get_field_name( 'no_items' ); ?>">
+        <option value="1"  <?php selected( $no_items, 1 );  ?>>1</option>
+        <option value="2"  <?php selected( $no_items, 2 );  ?>>2</option>
+        <option value="3"  <?php selected( $no_items, 3 );  ?>>3</option>
+        <option value="4"  <?php selected( $no_items, 4 );  ?>>4</option>
+        <option value="5"  <?php selected( $no_items, 5 );  ?>>5</option>
+        <option value="6"  <?php selected( $no_items, 6 );  ?>>6</option>
+        <option value="7"  <?php selected( $no_items, 7 );  ?>>7</option>
+        <option value="8"  <?php selected( $no_items, 8 );  ?>>8</option>
+        <option value="9"  <?php selected( $no_items, 9 );  ?>>9</option>
+        <option value="10" <?php selected( $no_items, 10 ); ?>>10</option>
+      </select>
     </p>
     <?php
 
