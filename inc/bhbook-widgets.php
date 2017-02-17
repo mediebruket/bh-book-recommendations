@@ -58,6 +58,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     $title = apply_filters( 'widget_title', $instance['title'] );
     $url = esc_url($instance['url']);
     $no_items = $instance['no_items'];
+    $images = ! $instance['hide_images'];
 
     if ( ! empty( $title ) ) {
       $widget_string .= $args['before_title'] . $title . $args['after_title'];
@@ -66,7 +67,8 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     $feed_args = array(
       'url' => $url,
       'images' => true,
-      'number' => $no_items
+      'number' => $no_items,
+      'images' => $images
       );
     $widget_string .= bhbook_get_items($feed_args);
     $widget_string .= $after_widget;
@@ -90,6 +92,7 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
     $instance['url'] = ( ! empty( $new_instance['url'] ) ) ? esc_url_raw(strip_tags( $new_instance['url'] )) : '';
     $instance['no_items'] = ( ! empty( $new_instance['no_items'] ) ) ? intval( $new_instance['no_items'] ) : '';
+    $instance['hide_images'] = ( ! empty( $new_instance['hide_images'] ) ) ? esc_attr( $new_instance['hide_images'] ) : '0';
     return $instance;
   }
 
@@ -114,6 +117,12 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
     else {
       $no_items = BHBR_DEFAULT_NO_ITEMS;
     }
+    if ( isset ($instance['hide_images'] ) ) {
+      $hide_images = esc_attr($instance['hide_images']);
+    }
+    else {
+      $hide_images = 0;
+    }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bh-book-recommendations' ); ?></label>
@@ -137,6 +146,10 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
         <option value="9"  <?php selected( $no_items, 9 );  ?>>9</option>
         <option value="10" <?php selected( $no_items, 10 ); ?>>10</option>
       </select>
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'hide_images' ); ?>"><?php _e( 'Hide images:', 'bh-book-recommendations' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'hide_images' ); ?>" name="<?php echo $this->get_field_name( 'hide_images' ); ?>" type="checkbox" value="1" <?php checked( $hide_images, '1' ); ?> />
     </p>
     <?php
 
