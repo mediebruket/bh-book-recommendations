@@ -2,8 +2,8 @@
 Contributors: hgmb
 Tags: rss, deichman, library, bibliotek, hordaland, shortcode, widget, feed
 Requires at least: 4.3
-Tested up to: 5.1.1
-Stable tag: 0.1.6
+Tested up to: 5.4
+Stable tag: 0.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,9 @@ In order to change display to grid, use the display argument in the shortcode, f
 Additionally, there is also a widget available. Custom feed URL can be utilized as described above.
 
 == Changelog ==
+
+= 0.1.7 =
+* Removed duplicate function argument.
 
 = 0.1.6 =
 * Support for setting number of reviews in both widget and short code (`number=4` for instance) and setting for hiding images added to widget.

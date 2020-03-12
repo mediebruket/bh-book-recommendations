@@ -66,7 +66,6 @@ class BookRecommendationsFeed_Widget extends WP_Widget {
 
     $feed_args = array(
       'url' => $url,
-      'images' => true,
       'number' => $no_items,
       'images' => $images
       );
