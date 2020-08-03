@@ -63,7 +63,7 @@ final class BookRecommendations
 
     public function add_textdomain()
     {
-        load_plugin_textdomain('bh-book-recommendations', false, plugin_basename(dirname(__FILE__)) . '/languages');
+        load_plugin_textdomain('bh-book-recommendations', false, plugin_basename(__DIR__) . '/languages');
     }
 }
 
