@@ -22,17 +22,26 @@ function bhbook_get_items($args)
     if (! wp_style_is('bhbook')) {
         wp_enqueue_style('bhbook');
     }
-    $feed = new BookRecommendationsFeed($args['url'], $args['number']);
+
     $additional_classes = '';
     if (array_key_exists('display', $args) && $args['display'] == 'grid') {
         $additional_classes = 'bhbook-items__grid';
     }
+
+    $feed = new BookRecommendationsFeed($args['url'], $args['number']);
+    $items = $feed->getItems();
+    if (! $items) {
+        return __('There is something wrong with the feed. Please check the arguments.', 'bh-book-recommendations');
+    }
+
     $html = '<ul class="bhbook-items ' . $additional_classes . '">';
     ob_start();
+
     foreach ($feed->getItems() as $item) {
         $review = new BookRecommendationsReview($item);
         $html .= bhbook_item_get_markup($review, $args['images']);
     }
+
     $html .= ob_get_clean();
     $html .= '</ul>';
     return $html;
