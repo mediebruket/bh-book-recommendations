@@ -9,7 +9,7 @@ function bhbook_shortcode_handler($atts = array())
     'number' => BHBR_DEFAULT_NO_ITEMS
     ), $atts);
     $a['images'] = filter_var($a['images'], FILTER_VALIDATE_BOOLEAN);
-    $a['number'] = intval($a['number']);
+    $a['number'] = (int) $a['number'];
     if (! $a['number']) {
         $a['number'] = BHBR_DEFAULT_NO_ITEMS;
     }
@@ -24,7 +24,7 @@ function bhbook_get_items($args)
     }
 
     $additional_classes = '';
-    if (array_key_exists('display', $args) && $args['display'] == 'grid') {
+    if (array_key_exists('display', $args) && $args['display'] === 'grid') {
         $additional_classes = 'bhbook-items__grid';
     }
 
@@ -44,12 +44,14 @@ function bhbook_get_items($args)
 
     $html .= ob_get_clean();
     $html .= '</ul>';
+
     return $html;
 }
 
 function bhbook_item_get_markup($review, $show_images = true)
 {
     $html = '<li class="bhbook-item">';
+
     if ($show_images) {
         $html .= '<div class="bhbook-image">';
         $html .= '<a target="_blank" href="' . $review->link . '">';
@@ -57,13 +59,21 @@ function bhbook_item_get_markup($review, $show_images = true)
         $html .= '</a>';
         $html .= '</div>';
     }
+
     $html .= '<div class="bhbook-content">';
-    $html .= '<div class="bhbook-title"><a target="_blank" href="' . $review->link . '">' . $review->title . '</a></div>';
+    $html .= sprintf(
+        '<div class="bhbook-title"><a target="_blank" href="%s">%s</a></div>',
+        $review->link,
+        $review->title
+    );
+
     if ($review->description) {
         $html .= '<div class="bhbook-description">' . $review->description . '</div>';
     }
+
     $html .= '</div>';
     $html .= '</li>' . "\n";
+
     return $html;
 }
 
@@ -71,13 +81,18 @@ function bhbook_get_image_tag($review)
 {
     $url = $review->imageURL;
     $alt = __('Illustrative image for the review of ', 'bh-book-recommendations') . $review->title;
-    if (strpos($url, 'krydder') !== false || strlen($url) == 0) {
+
+    if (strpos($review->imageURL, 'bokkilden') !== false) {
+        $url .= '&width=300';
+    }
+
+    if (! $url || strpos($url, 'krydder') !== false) {
         $url = BHBR_URL . 'assets/placeholder.png';
         $alt = __('The review does not have an image so this is used as a replacement', 'bh-book-recommendations');
-    } elseif (strpos($review->imageURL, 'bokkilden') !== false) {
-        $url = $review->imageURL . '&width=300';
     }
+
     str_replace('http:', '', $url);
     str_replace('https:', '', $url);
+
     return sprintf('<img src="%s" alt="%s">', $url, $alt);
 }
